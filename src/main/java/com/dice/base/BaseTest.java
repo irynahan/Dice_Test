@@ -1,4 +1,4 @@
-package com.dice;
+package com.dice.base;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +12,7 @@ import org.testng.annotations.Parameters;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class BaseTest {
 
     protected WebDriver driver;
     protected Logger log;
@@ -29,7 +29,6 @@ public class TestBase {
         BrowserDriverFactory factory = new BrowserDriverFactory(browser, log);
         driver = factory.createDriver();
         driver.manage().window().maximize();
-        driver.navigate().to("https://www.dice.com/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
