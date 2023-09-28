@@ -16,6 +16,7 @@ public class LoginPage extends BasePageObject <LoginPage> {
     private By emailField = By.id("email");
     private By passwordField = By.id("password") ;
     private By signInButton = By.xpath("//button[@type = 'submit']");
+    private By errorLoginMessage = By.xpath("//span[@data-automation-id ='login-failure-help-message']/strong");
 
     public void openLogInPage() {
         getPage(URL);
@@ -31,4 +32,7 @@ public class LoginPage extends BasePageObject <LoginPage> {
         return new ProfilePage(driver, log);
     }
 
+    public String getLoginErrorMessage() {
+        return getElementsText(errorLoginMessage);
+    }
 }

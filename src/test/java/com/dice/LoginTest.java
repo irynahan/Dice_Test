@@ -1,3 +1,5 @@
+package com.dice;
+
 import com.dice.base.BaseTest;
 import com.dice.pages.LoginPage;
 import com.dice.pages.ProfilePage;
@@ -31,5 +33,31 @@ public class LoginTest extends BaseTest {
 
         // - verify name on profile page
         Assert.assertTrue(profilePage.isCorrectProfileLoaded(correctProfileName), "Profile name is not correct");
+    }
+
+    @Test
+    public void negativeLoginTest() {
+
+        LoginPage loginPage = new LoginPage(driver, log);
+
+        String expectedErrorMessage = "Email and/or password incorrect." ;
+
+        // open dice log in page
+        loginPage.openLogInPage();
+
+        // fill in login and password
+        loginPage.fillInEmailAndPassword("rdmitrysqa@gmail.com", "Automation2017");
+
+        // push Sign In button
+        loginPage.pushSignInButton();
+
+        // get actual error message
+        String actualErrorMessage = loginPage.getLoginErrorMessage();
+
+        // Verifications
+        // Verify error message
+
+        Assert.assertTrue(actualErrorMessage.contains(expectedErrorMessage), "Error message is not expected. \nExpected error message is: " + expectedErrorMessage + "\nActual error message is: " + actualErrorMessage);
+
     }
 }
