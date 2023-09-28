@@ -4,7 +4,6 @@
 
     <test name="LoginPositiveTest" >
         <classes>
-
             <class name="com.dice.LoginTest">
                 <methods>
                     <include name="positiveLoginTest" />
