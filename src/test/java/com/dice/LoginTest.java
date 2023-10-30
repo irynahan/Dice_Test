@@ -49,7 +49,7 @@ public class LoginTest extends BaseTest {
         String description = testData.get("description");
         String expectedErrorMessage = "Email and/or password incorrect." ;
 
-        log.info("Test No #" + testNumber + "for" + description + " Where\nEmail: " + email + "\nPassword: " + password);
+        log.info("Test No # " + testNumber + " for " + description + " Where\nEmail: " + email + "\nPassword: " + password);
 
         // open dice log in page
         loginPage.openLogInPage();
