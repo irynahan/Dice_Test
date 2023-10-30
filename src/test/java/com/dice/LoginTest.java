@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class LoginTest extends BaseTest {
 
-    @Test ()
+    @Test (priority = 1, groups = {"positive", "login"})
     public void positiveLoginTest() {
 
         LoginPage loginPage = new LoginPage(driver, log);
@@ -38,7 +38,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(profilePage.isCorrectProfileLoaded(correctProfileName), "Profile name is not correct");
     }
 
-    @Test (dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class)
+    @Test (dataProvider = "csvReader", dataProviderClass = CsvDataProviders.class, priority = 2, groups = {"negative", "login"})
     public void negativeLoginTest( Map<String, String> testData) {
 
         LoginPage loginPage = new LoginPage(driver, log);

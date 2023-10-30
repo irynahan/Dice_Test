@@ -4,10 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +15,7 @@ public class BaseTest {
     protected Logger log;
 
     @Parameters({"browser"})
-    @BeforeTest
+    @BeforeMethod(alwaysRun = true)
     public void setUp(Method method, @Optional("chrome") String browser, ITestContext ctx) {
 
         // ctx - context is used to get current test name for log acc. Xml file;
@@ -33,7 +30,7 @@ public class BaseTest {
 
     }
 
-    @AfterMethod(enabled = false)
+    @AfterMethod(enabled = true, alwaysRun = true)
     public void tearDown() {
         // close browser
         log.info("Close driver");
